@@ -36,4 +36,6 @@ recipeDifficulty.insertAdjacentElement("afterend", messageDifficulty);    }
         isValide = false;
   messageTime.textContent = "Le temps doit être entre 1 et 300 minutes.";
 recipeTime.insertAdjacentElement("afterend", messageTime);    }
+
+    return isValide;
 }

@@ -24,6 +24,8 @@ let form = document.getElementById("recipe-form");
 form.addEventListener("submit",(event)=>{
       event.preventDefault();
   
-     checkform();
+    if (!checkform()) {
+    return;
+}
     // console.log("Submit fonctionne !");
 }) 

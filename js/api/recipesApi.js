@@ -13,3 +13,7 @@ export async function searchRecipes (query){
     })
     return response.data.recipes;
 }
+export async function addRecipe(recipe) {
+    const response = await api.post("/recipes/add", recipe);
+    return response.data;
+}
