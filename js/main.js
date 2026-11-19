@@ -4,6 +4,7 @@
 import { getRecipes } from "./api/recipesApi.js";
 import { recipesCard } from "./affichage/recipesUI.js";
 import {searchRecipes} from "./api/recipesApi.js"
+import { checkform } from "./validation/recipeValidation.js";
 async function init (){
     const recipes = await getRecipes();
     recipesCard(recipes);
@@ -15,12 +16,14 @@ searchForm.addEventListener("submit", async(event)=>{
     event.preventDefault();
  const query = searchInput.value;
  const recipes = await searchRecipes(query);
+
 recipesCard(recipes);
 
 })
 let form = document.getElementById("recipe-form");
 form.addEventListener("submit",(event)=>{
-    if(form =""){
-        return;
-    }
-})
+      event.preventDefault();
+  
+     checkform();
+    // console.log("Submit fonctionne !");
+}) 
