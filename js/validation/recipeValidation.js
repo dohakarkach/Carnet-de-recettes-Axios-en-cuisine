@@ -15,20 +15,25 @@ messageDifficulty.classList.add("text-red-600", "text-sm", "mt-1");
 let messageTime = document.createElement("p");
 messageTime.classList.add("text-red-600", "text-sm", "mt-1");
  export function checkform(){
+    let isValide = true;
     if(recipeName.value.trim().length < 3 || recipeName.value.trim().length >60){
-       
+           isValide = false;
         message.textContent = "invalide";
         recipeName.insertAdjacentElement("afterend", message);
         // insertAdjacentElement permet d'ajouter un element dan html
         // afterend place le judte apres  l'élement actuel
     }
+    
     if(recipeCuisine.value.trim() === ""){
+          isValide = false;
          messageCuisine.textContent = "Veuillez saisir la cuisine.";
 recipeCuisine.insertAdjacentElement("afterend", messageCuisine);    }
     if(recipeDifficulty.value === ""){
+        isValide = false;
         messageDifficulty.textContent = "Veuillez saisir la Difficulty."
 recipeDifficulty.insertAdjacentElement("afterend", messageDifficulty);    }
     if(recipeTime.value === "" || recipeTime.value >300 || recipeTime.value < 1){
+        isValide = false;
   messageTime.textContent = "Le temps doit être entre 1 et 300 minutes.";
 recipeTime.insertAdjacentElement("afterend", messageTime);    }
 }
