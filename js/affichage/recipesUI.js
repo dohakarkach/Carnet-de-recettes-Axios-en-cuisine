@@ -2,7 +2,7 @@ let recipesContainer = document.getElementById("recipes-container");
 let recipesCount = document.getElementById("recipes-count");
 
  export function recipesCard(recipes){
-    recipesContainer.innerHTML = "";
+   // recipesContainer.innerHTML = "";
     if(recipes.length === 0){
         let messagge = document.createElement("p");
 
@@ -11,7 +11,7 @@ messagge.className = "text-3xl font-bold text-center text-gray-700 mt-10";
 recipesContainer.appendChild(messagge);
         return;
     }
-    recipesCount.textContent = `${recipes.length} recettes`
+    recipesCount.textContent = `${recipes.length}`
 recipesCount.className = "inline-block border border-gray-400 rounded-lg px-4 py-2 text-gray-700 font-semibold mb-6";
     recipes.forEach((recipe)=>{
 

@@ -4,16 +4,18 @@ import api from "./axios.js";
     return response.data.recipes ;
 }
 // searchRecipes("pizza")
-export async function searchRecipes (query){
-    const response = await api.get ("/recipes/search",{
-        params:{
-            q:query
-        }
-        
-    })
-    return response.data.recipes;
+export async function searchRecipes(query) {
+    const result = await api.get("/recipes/search",{
+params:{
+    q:query
 }
-export async function addRecipe(recipe) {
-    const response = await api.post("/recipes/add", recipe);
-    return response.data;
+
+    });
+   return result.data.recipes
+
+}
+export  async function addRecipe(recipe) {
+   const resultat = await api.post("/recipes/add", recipe);
+   console.log("card", resultat.data)
+   return [resultat.data];
 }
