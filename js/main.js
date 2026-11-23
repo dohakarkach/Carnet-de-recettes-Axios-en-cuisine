@@ -3,7 +3,7 @@
 
 import { getRecipes } from "./api/recipesApi.js";
 import { recipesCard } from "./affichage/recipesUI.js";
-import {searchRecipes} from "./api/recipesApi.js"
+import { searchRecipes } from "./api/recipesApi.js";
 import { checkform } from "./validation/recipeValidation.js";
 import { addRecipe } from "./api/recipesApi.js";
 let recipesList = [];
@@ -20,6 +20,7 @@ searchForm.addEventListener("submit", async (event)=>{
 event.preventDefault();
 let query = searchInput.value;
 const recipes = await searchRecipes(query);
+console.log("Résultats recherche :", recipes);
    recipesCard(recipes);
 })
 const recipeName = document.getElementById("recipe-name");
@@ -47,13 +48,23 @@ prepTimeMinutes : Number(recipeTime.value),
 
  } 
 
-
- const result = await addRecipe(recette)
+try
+{ const result = await addRecipe(recette);
+    console.log("Resultat API:",result);
+    
+      recipesList.unshift(result[0]);
+    recipesCard(recipesList);
  form.reset();
-recipesCard(result)
+}catch(error){
+console.error("Erreur :" , error);
+console.log("status ; ", error.responde?.status);
+console.log("Message :" , error.message);
+
+
+}finally{
+
+
  button.disabled = false;
-//recipesList.unshift(result);
-// recipesCard(recipesList);
-let recipesCount = document.getElementById("recipes-count");
-recipesCount.textContent = Number(recipesCount.textContent) + 1
+
+}
 })

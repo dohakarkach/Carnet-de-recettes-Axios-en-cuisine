@@ -2,7 +2,7 @@ let recipesContainer = document.getElementById("recipes-container");
 let recipesCount = document.getElementById("recipes-count");
 
  export function recipesCard(recipes){
-   // recipesContainer.innerHTML = "";
+   recipesContainer.innerHTML = "";
     if(recipes.length === 0){
         let messagge = document.createElement("p");
 

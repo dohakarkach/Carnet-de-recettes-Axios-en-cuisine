@@ -14,8 +14,8 @@ params:{
    return result.data.recipes
 
 }
+
 export  async function addRecipe(recipe) {
    const resultat = await api.post("/recipes/add", recipe);
-   console.log("card", resultat.data)
-   return [resultat.data];
+   return resultat.data;
 }

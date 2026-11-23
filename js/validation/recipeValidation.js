@@ -14,7 +14,7 @@ let messageDifficulty = document.createElement("p");
 messageDifficulty.classList.add("text-red-600", "text-sm", "mt-1");
 let messageTime = document.createElement("p");
 messageTime.classList.add("text-red-600", "text-sm", "mt-1");
- export function checkform(){
+ export function checkform(){ 
     let isValide = true;
     if(recipeName.value.trim().length < 3 || recipeName.value.trim().length >60){
            isValide = false;
