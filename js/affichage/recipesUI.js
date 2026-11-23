@@ -1,7 +1,7 @@
 let recipesContainer = document.getElementById("recipes-container");
 let recipesCount = document.getElementById("recipes-count");
 
- export function recipesCard(recipes){
+ export function recipesCard(recipes , onDelete){
    recipesContainer.innerHTML = "";
     if(recipes.length === 0){
         let messagge = document.createElement("p");
@@ -60,8 +60,7 @@ card.appendChild(button);
 button.addEventListener("click",()=>{
      let reponse = confirm("Voulez-vous vraiment supprimer cette recette ?");
      if(reponse){
- let newRecipes = recipes.filter(item => item.id !== recipe.id);
-   recipesCard(newRecipes);}
+onDelete(recipe.id);}
 
 })
 

@@ -19,3 +19,8 @@ export  async function addRecipe(recipe) {
    const resultat = await api.post("/recipes/add", recipe);
    return resultat.data;
 }
+
+export async function deleteRecipe(id) {
+    const response =  await api.delete(`/recipes/${id}`)
+       return response.data;
+}

@@ -6,11 +6,11 @@ import { recipesCard } from "./affichage/recipesUI.js";
 import { searchRecipes } from "./api/recipesApi.js";
 import { checkform } from "./validation/recipeValidation.js";
 import { addRecipe } from "./api/recipesApi.js";
+import {deleteRecipe} from "./api/recipesApi.js";
 let recipesList = [];
 async function init() {
      recipesList = await getRecipes ();
-    recipesCard(recipesList);
-}
+recipesCard(recipesList, supprimerRecette);}
 init()
 
 
@@ -21,8 +21,7 @@ event.preventDefault();
 let query = searchInput.value;
 const recipes = await searchRecipes(query);
 // console.log("Résultats recherche :", recipes);
-   recipesCard(recipes);
-})
+recipesCard(recipes, supprimerRecette);})
 const recipeName = document.getElementById("recipe-name");
 const recipeCuisine = document.getElementById("recipe-cuisine");
 const recipeDifficulty = document.getElementById("recipe-difficulty");
@@ -54,7 +53,7 @@ try
     console.log("Resultat API:",result);
     
       recipesList.unshift(result);
-    recipesCard(recipesList);
+    recipesCard(recipesList , supprimerRecette);
 let successMessage = document.getElementById("success-message");
  successMessage.textContent = "Recette ajoutée avec succès !";
 
@@ -75,3 +74,8 @@ console.log("Message :" , error.message);
 
 }
 })
+async function supprimerRecette(id) {
+    await deleteRecipe(id);
+    recipesList = recipesList.filter(recipe => recipe.id !== id);
+recipesCard(recipesList, supprimerRecette);
+}
