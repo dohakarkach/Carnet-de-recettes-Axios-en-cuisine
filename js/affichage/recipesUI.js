@@ -18,10 +18,13 @@ recipesCount.className = "inline-block border border-gray-400 rounded-lg px-4 py
 let card = document.createElement("div");
 card.className = "bg-white rounded-xl shadow-md p-4";
 
+
 let image = document.createElement("img")
 image.src = recipe.image;
 image.alt = recipe.name;
 image.classList.add("w-full", "h-48", "object-cover", "rounded-lg");
+
+
 card.appendChild(image);
 let titre = document.createElement("h2");
 titre.textContent = recipe.name;
@@ -41,7 +44,27 @@ prepTime.textContent = `Temps de préparation : ${recipe.prepTimeMinutes} minute
 prepTime.classList.add("text-gray-600", "mt-2");
 
 card.appendChild(prepTime);
+let button = document.createElement("button");
+button.textContent = "supprimer";
+button.classList.add(
+    "bg-red-600",
+    "text-white",
+    "px-2",
+    "py-1",
+    "text-sm",
+    "rounded-lg",
+    "hover:bg-red-700",
+    "transition"
+);
+card.appendChild(button);
+button.addEventListener("click",()=>{
+ let newRecipes = recipes.filter(item => item.id !== recipe.id);
+   recipesCard(newRecipes);
+
+})
+
 recipesContainer.appendChild(card)
+
 
     })
 

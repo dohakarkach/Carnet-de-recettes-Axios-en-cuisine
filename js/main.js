@@ -20,7 +20,7 @@ searchForm.addEventListener("submit", async (event)=>{
 event.preventDefault();
 let query = searchInput.value;
 const recipes = await searchRecipes(query);
-console.log("Résultats recherche :", recipes);
+// console.log("Résultats recherche :", recipes);
    recipesCard(recipes);
 })
 const recipeName = document.getElementById("recipe-name");
@@ -49,11 +49,18 @@ prepTimeMinutes : Number(recipeTime.value),
  } 
 
 try
-{ const result = await addRecipe(recette);
+{ 
+    const result = await addRecipe(recette);
     console.log("Resultat API:",result);
     
-      recipesList.unshift(result[0]);
+      recipesList.unshift(result);
     recipesCard(recipesList);
+let successMessage = document.getElementById("success-message");
+ successMessage.textContent = "Recette ajoutée avec succès !";
+
+successMessage.classList.remove("hidden");
+
+
  form.reset();
 }catch(error){
 console.error("Erreur :" , error);
