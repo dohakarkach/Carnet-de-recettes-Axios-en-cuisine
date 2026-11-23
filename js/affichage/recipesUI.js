@@ -58,10 +58,13 @@ button.classList.add(
 );
 card.appendChild(button);
 button.addEventListener("click",()=>{
+     let reponse = confirm("Voulez-vous vraiment supprimer cette recette ?");
+     if(reponse){
  let newRecipes = recipes.filter(item => item.id !== recipe.id);
-   recipesCard(newRecipes);
+   recipesCard(newRecipes);}
 
 })
+
 
 recipesContainer.appendChild(card)
 
